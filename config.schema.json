@@ -1,16 +1,36 @@
 {
-  "pluginAlias": "ExampleHomebridgePlugin",
-  "pluginType": "platform",
+  "pluginAlias": "AirQualitySensor",
+  "pluginType": "accessory",
   "singular": true,
   "schema": {
     "type": "object",
     "properties": {
-      "name": {
-        "title": "Name",
+      "serialNumber": {
         "type": "string",
-        "required": true,
-        "default": "Example Dynamic Platform"
+        "title": "Serial Number",
+        "description": "The serial number of your AirGradient device.",
+        "required": true
+      },
+      "pollDelay": {
+        "type": "number",
+        "title": "Polling Delay (ms)",
+        "description": "Delay in milliseconds between each poll to the AirGradient device. Default is 30000 (30 seconds).",
+        "default": 30000,
+        "minimum": 1000,
+        "required": false
       }
+    },
+    "required": ["serialNumber"]
+  },
+  "form": [
+    {
+      "key": "serialNumber",
+      "placeholder": "e.g., abc123def456"
+    },
+    {
+      "key": "pollDelay",
+      "placeholder": "e.g., 30000"
     }
-  }
+  ]
 }
+
